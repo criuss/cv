@@ -1,0 +1,79 @@
+\documentclass[10pt]{article}
+
+\pagestyle{empty} % Suppresses page numbers on all pages
+
+\usepackage[colorlinks=true, urlcolor=blue, linkcolor=cyan]{hyperref} % For links
+\hypersetup{
+$if(lang)$
+  pdflang={$lang$},
+$endif$
+$if(keywords)$
+  pdfkeywords={$for(keywords)$$keywords$$sep$, $endfor$},
+$endif$
+  pdfauthor={$name$},
+  pdftitle={$name$: CV},
+  pdfsubject = {Curriculum Vitae},
+  pdfcreator={LaTeX via pandoc},
+  pdfpagemode = UseNone
+  }
+
+\usepackage[a4paper, margin=15mm]{geometry}
+
+% Use font 'TeX Gyre Pagella'
+% https://tug.org/FontCatalogue/texgyrepagella/
+%% \usepackage{tgpagella}
+%% \usepackage[T1]{fontenc}
+\usepackage[default]{sourcesanspro}
+\usepackage{sourcecodepro}
+
+% Disable section numbering
+\setcounter{secnumdepth}{0}
+
+% Set subtitle formatting
+\usepackage{titlesec}
+\titleformat{\section}{\Large\bf}{}{}{\uppercase}[{\titlerule[0.5pt]}]
+
+\titlespacing*{\section}
+  {0pt}      % Left
+  {12pt plus 4pt minus 2pt} % Before
+  {6pt}      % After
+
+% Fix "! Undefined control sequence. l.70 \tightlist",
+% https://github.com/osener/markup.rocks/issues/4
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% Remove indenting for paragraphs
+\setlength\parindent{0pt}
+
+\begin{document}
+
+% Display title
+% I couldn't get \maketitle to do what I wanted, it was easier to do it manually
+{%
+\centering\huge{\textbf{\uppercase{$name$}}} \\
+\hfill
+}
+
+% Display details in left/right columns
+\begin{minipage}[t]{0.5\textwidth}
+	\begin{tabbing}
+		\hspace{2cm} \= \hspace{4cm} \= \kill
+		$for(left/pairs)$
+			\textbf{$it.key$} \> {$it.value$} \\
+		$endfor$
+	\end{tabbing}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.5\textwidth}
+	\begin{tabbing}
+		\hspace{2cm} \= \hspace{4cm} \= \kill
+		$for(right/pairs)$
+			\textbf{$it.key$} \> {$it.value$} \\
+		$endfor$
+	\end{tabbing}
+\end{minipage}
+
+$body$
+
+\end{document}
