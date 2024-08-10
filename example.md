@@ -2,8 +2,6 @@
 lang: en-US
 keywords: programming, coding, software
 name: John Doe
-left: {}
-right: {}
 contacts:
   - Address:
       icon: Home
