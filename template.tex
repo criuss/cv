@@ -82,7 +82,12 @@ $for(contacts)$
       {$it.value.text$}
     $else$
       {$it.value$}
-    $endif$ \>
+    $endif$
+    $if(it.value.break)$
+      \\
+    $else$
+      \>
+    $endif$
   $endfor$
 $endfor$
 \end{center}

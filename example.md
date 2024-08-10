@@ -9,6 +9,7 @@ contacts:
   - Mobile:
       icon: Phone
       text: "+12345678678678"
+      break: true
   - Email:
       icon: Envelope
       text: firstname@lastname.com
