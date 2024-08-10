@@ -3,7 +3,7 @@ lang: en-US
 keywords: programming, coding, software
 name: John Doe
 left:
-	Address: 13 Somestreet, A3EF Some City, Middle Earth
+  Address: 13 Somestreet, A3EF Some City, Middle-Earth
   Mobile: "+12345678678678"
 right:
 	Email: firstname@lastname.com
