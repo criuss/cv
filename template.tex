@@ -4,11 +4,14 @@
 
 \usepackage{enumitem}
 
+\usepackage{fontawesome5}
+
 % \setlist[description]{before*=\vspace{-0.3em}, after*=\vspace{0em}}
 \setlist[itemize]{noitemsep, nolistsep, before*=\vspace{-1em}, after*=\vspace{-0.3em}}
 
 \usepackage{xcolor}
 \definecolor{htlblue}{HTML}{395c6b}
+
 \usepackage[colorlinks=true, urlcolor=htlblue, linkcolor=htlblue]{hyperref} % For links
 \hypersetup{
 $if(lang)$
@@ -62,34 +65,33 @@ $endif$
 \hfill
 }
 
-% Display details in left/right columns
-\begin{minipage}[t]{0.5\textwidth}
-	\begin{tabbing}
-		\hspace{2cm} \= \hspace{4cm} \= \kill
-        $for(left/pairs)$
-			\textbf{$it.key$} \>
-			$if(it.value.link)$
-				\href{$it.value.link$}{$it.value.text$}
-			$else$
-				{$it.value$}
-			$endif$ \\
-		$endfor$
-	\end{tabbing}
-\end{minipage}%
-\hfill
-\begin{minipage}[t]{0.5\textwidth}
-	\begin{tabbing}
-		\hspace{2cm} \= \hspace{4cm} \= \kill
-        $for(right/pairs)$
-			\textbf{$it.key$} \>
-			$if(it.value.link)$
-				\href{$it.value.link$}{$it.value.text$}
-			$else$
-				{$it.value$}
-			$endif$ \\
-		$endfor$
-	\end{tabbing}
-\end{minipage}
+\vspace{-1em}
+
+\begin{center}
+$for(contacts)$
+  $for(it/pairs)$
+    $if(it.value.icon)$
+      \fa$it.value.icon$
+    $else$
+      \textbf{$it.key$}
+    $endif$
+    \hspace{0.3em}
+    $if(it.value.link)$
+      \href{$it.value.link$}{$it.value.text$}
+    $elseif(it.value.text)$
+      {$it.value.text$}
+    $else$
+      {$it.value$}
+    $endif$ \>
+  $endfor$
+$endfor$
+\end{center}
+
+\vspace{-1em}
+
+\textcolor{lightgray}{\rule{\textwidth}{0.05pt}}
+
+\vspace{-.5em}
 
 $body$
 

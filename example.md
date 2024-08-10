@@ -2,16 +2,23 @@
 lang: en-US
 keywords: programming, coding, software
 name: John Doe
-left:
-  Address: 13 Somestreet, A3EF Some City, Middle-Earth
-  Mobile: "+12345678678678"
-right:
-  Email:
-    text: firstname@lastname.com
-    link: mailto:firstname@lastname.com
-  Website:
-    text: lastname.com
-    link: https://lastname.com
+left: {}
+right: {}
+contacts:
+  - Address:
+      icon: Home
+      text: 13 Somestreet, A3EF Some City, Middle-Earth
+  - Mobile:
+      icon: Phone
+      text: "+12345678678678"
+  - Email:
+      icon: Envelope
+      text: firstname@lastname.com
+      link: mailto:firstname@lastname.com
+  - Website:
+      icon: Laptop
+      text: lastname.com
+      link: https://lastname.com
 ...
 
 <!-- I use Pandoc's 'pairs' pipe feature to create the left/right columns from the above
