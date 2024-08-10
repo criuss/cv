@@ -7,7 +7,9 @@
 % \setlist[description]{before*=\vspace{-0.3em}, after*=\vspace{0em}}
 \setlist[itemize]{noitemsep, nolistsep, before*=\vspace{-1em}, after*=\vspace{-0.3em}}
 
-\usepackage[colorlinks=true, urlcolor=blue, linkcolor=cyan]{hyperref} % For links
+\usepackage{xcolor}
+\definecolor{htlblue}{HTML}{395c6b}
+\usepackage[colorlinks=true, urlcolor=htlblue, linkcolor=htlblue]{hyperref} % For links
 \hypersetup{
 $if(lang)$
   pdflang={$lang$},
@@ -64,8 +66,13 @@ $endif$
 \begin{minipage}[t]{0.5\textwidth}
 	\begin{tabbing}
 		\hspace{2cm} \= \hspace{4cm} \= \kill
-		$for(left/pairs)$
-			\textbf{$it.key$} \> {$it.value$} \\
+        $for(left/pairs)$
+			\textbf{$it.key$} \>
+			$if(it.value.link)$
+				\href{$it.value.link$}{$it.value.text$}
+			$else$
+				{$it.value$}
+			$endif$ \\
 		$endfor$
 	\end{tabbing}
 \end{minipage}%
@@ -73,8 +80,13 @@ $endif$
 \begin{minipage}[t]{0.5\textwidth}
 	\begin{tabbing}
 		\hspace{2cm} \= \hspace{4cm} \= \kill
-		$for(right/pairs)$
-			\textbf{$it.key$} \> {$it.value$} \\
+        $for(right/pairs)$
+			\textbf{$it.key$} \>
+			$if(it.value.link)$
+				\href{$it.value.link$}{$it.value.text$}
+			$else$
+				{$it.value$}
+			$endif$ \\
 		$endfor$
 	\end{tabbing}
 \end{minipage}

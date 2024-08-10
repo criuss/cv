@@ -6,8 +6,12 @@ left:
   Address: 13 Somestreet, A3EF Some City, Middle-Earth
   Mobile: "+12345678678678"
 right:
-	Email: firstname@lastname.com
-	Website: lastname.com
+  Email:
+    text: firstname@lastname.com
+    link: mailto:firstname@lastname.com
+  Website:
+    text: lastname.com
+    link: https://lastname.com
 ...
 
 <!-- I use Pandoc's 'pairs' pipe feature to create the left/right columns from the above
