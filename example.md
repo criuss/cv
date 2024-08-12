@@ -18,6 +18,10 @@ contacts:
       icon: Laptop
       text: lastname.com
       link: https://lastname.com
+  - LinkedIn:
+      icon: Linkedin
+      text: in/first-last
+      link: https://www.linkedin.com/in/first-last/
 ...
 
 <!-- I use Pandoc's 'pairs' pipe feature to create the left/right columns from the above
