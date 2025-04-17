@@ -1,0 +1,111 @@
+\documentclass[10pt]{article}
+
+\pagestyle{empty} % Suppresses page numbers on all pages
+
+\usepackage{enumitem}
+
+\usepackage{fontawesome5}
+
+\usepackage{graphicx}
+
+\usepackage{wrapfig}
+
+% \setlist[description]{before*=\vspace{-0.3em}, after*=\vspace{0em}}
+\setlist[itemize]{noitemsep, nolistsep, before*=\vspace{-.7em}, after*=\vspace{-0.3em}}
+
+\usepackage{xcolor}
+\definecolor{htlblue}{HTML}{395c6b}
+
+\usepackage[colorlinks=true, urlcolor=htlblue, linkcolor=htlblue]{hyperref} % For links
+\hypersetup{
+$if(lang)$
+  pdflang={$lang$},
+$endif$
+$if(keywords)$
+  pdfkeywords={$for(keywords)$$keywords$$sep$, $endfor$},
+$endif$
+  pdfauthor={$name$},
+  pdftitle={$name$},
+  pdfsubject = {Curriculum Vitae},
+  pdfproducer={RPO CV Generator},
+  pdfcreator={Markdown to LaTeX using pandoc},
+  pdfpagemode = UseNone
+  }
+
+\usepackage[a4paper, margin=15mm]{geometry}
+
+% Use font 'TeX Gyre Pagella'
+% https://tug.org/FontCatalogue/texgyrepagella/
+%% \usepackage{tgpagella}
+%% \usepackage[T1]{fontenc}
+\usepackage[default]{sourcesanspro}
+\usepackage{sourcecodepro}
+
+% Disable section numbering
+\setcounter{secnumdepth}{0}
+
+% Set subtitle formatting
+\usepackage{titlesec}
+\titleformat{\section}{\Large\bf}{}{}{\uppercase}[{\titlerule[0.5pt]}]
+
+\titlespacing*{\section}
+  {0pt}      % Left
+  {12pt plus 4pt minus 2pt} % Before
+  {6pt}      % After
+
+% Fix "! Undefined control sequence. l.70 \tightlist",
+% https://github.com/osener/markup.rocks/issues/4
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% Remove indenting for paragraphs
+\setlength\parindent{0pt}
+
+\begin{document}
+
+\begin{minipage}{0.2\textwidth}
+  \includegraphics[width=3cm]{avatar.jpg}
+\end{minipage}
+\begin{minipage}{0.8\textwidth}
+  % Display title
+  % I couldn't get \maketitle to do what I wanted, it was easier to do it manually
+  {%
+  \centering\huge{\textbf{\uppercase{$name$}}} \\
+  \hfill
+  }
+
+  \vspace{-1em}
+
+  \begin{center}
+  $for(contacts)$
+    $for(it/pairs)$
+      $if(it.value.icon)$
+        \fa$it.value.icon$
+      $else$
+        \textbf{$it.key$}
+      $endif$
+      \hspace{0.3em}
+      $if(it.value.link)$
+        \href{$it.value.link$}{$it.value.text$}
+      $elseif(it.value.text)$
+        {$it.value.text$}
+      $else$
+        {$it.value$}
+      $endif$
+      $if(it.value.break)$
+        \\
+      $else$
+        \>
+      $endif$
+    $endfor$
+  $endfor$
+  \end{center}
+\end{minipage}
+
+\textcolor{lightgray}{\rule{\textwidth}{0.05pt}}
+
+\vspace{-.5em}
+
+$body$
+
+\end{document}
