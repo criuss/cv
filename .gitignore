@@ -322,3 +322,7 @@ tags
 [._]*.un~
 
 # End of https://www.toptal.com/developers/gitignore/api/vim,latex
+
+cv_*.tex
+cv_*.pdf
+!cv_example.pdf
