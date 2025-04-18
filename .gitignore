@@ -326,3 +326,4 @@ tags
 cv_*.tex
 cv_*.pdf
 !cv_example.pdf
+!cv_example_photo.pdf

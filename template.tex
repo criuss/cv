@@ -6,6 +6,10 @@
 
 \usepackage{fontawesome5}
 
+\usepackage{graphicx}
+
+\usepackage{wrapfig}
+
 % \setlist[description]{before*=\vspace{-0.3em}, after*=\vspace{0em}}
 \setlist[itemize]{noitemsep, nolistsep, before*=\vspace{-.7em}, after*=\vspace{-0.3em}}
 
@@ -26,7 +30,7 @@ $endif$
   pdfproducer={RPO CV Generator},
   pdfcreator={Markdown to LaTeX using pandoc},
   pdfpagemode = UseNone
-  }
+}
 
 \usepackage[a4paper, margin=15mm]{geometry}
 
@@ -59,41 +63,50 @@ $endif$
 
 \begin{document}
 
-% Display title
-% I couldn't get \maketitle to do what I wanted, it was easier to do it manually
-{%
-\centering\huge{\textbf{\uppercase{$name$}}} \\
-\hfill
-}
+$if(photo)$
+\begin{minipage}{0.2\textwidth}
+  \includegraphics[width=3cm]{$photo$}
+\end{minipage}
+\begin{minipage}{0.8\textwidth}
+$endif$
+  % Display title
+  % I couldn't get \maketitle to do what I wanted, it was easier to do it manually
+  {%
+    \centering\huge{\textbf{\uppercase{$name$}}} \\
+    \hfill
+  }
 
-\vspace{-1em}
+  \vspace{-1em}
 
-\begin{center}
-$for(contacts)$
-  $for(it/pairs)$
-    $if(it.value.icon)$
-      \fa$it.value.icon$
-    $else$
-      \textbf{$it.key$}
-    $endif$
-    \hspace{0.3em}
-    $if(it.value.link)$
-      \href{$it.value.link$}{$it.value.text$}
-    $elseif(it.value.text)$
-      {$it.value.text$}
-    $else$
-      {$it.value$}
-    $endif$
-    $if(it.value.break)$
-      \\
-    $else$
-      \>
-    $endif$
+  \begin{center}
+  $for(contacts)$
+    $for(it/pairs)$
+      $if(it.value.icon)$
+        \fa$it.value.icon$
+      $else$
+        \textbf{$it.key$}
+      $endif$
+      \hspace{0.3em}
+      $if(it.value.link)$
+        \href{$it.value.link$}{$it.value.text$}
+      $elseif(it.value.text)$
+        {$it.value.text$}
+      $else$
+        {$it.value$}
+      $endif$
+      $if(it.value.break)$
+        \\
+      $else$
+        \>
+      $endif$
+    $endfor$
   $endfor$
-$endfor$
-\end{center}
-
+  \end{center}
+$if(photo)$
+\end{minipage}
+$else$
 \vspace{-1em}
+$endif$
 
 \textcolor{lightgray}{\rule{\textwidth}{0.05pt}}
 
